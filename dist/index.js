@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar express = __webpack_require__(/*! express */ \"express\");\nvar app = express();\nvar port = \"3001\";\napp.get(\"/\", function (req, res) {\n    res.send('Hello typescript');\n});\napp.listen(port, function () { console.log('app listening ' + port); });\n\n\n//# sourceURL=webpack://pruebaexpress/./src/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar express = __webpack_require__(/*! express */ \"express\");\nvar mysql = __webpack_require__(/*! mysql */ \"mysql\");\nvar app = express();\nvar db = mysql.createConnection({\n    host: 'localhost:3306',\n    user: 'YES_BPO-BI',\n    password: '',\n    database: 'bdom'\n});\ndb.connect(function (err) {\n    if (err) {\n        console.error('Error al conectar a la base de datos:', err);\n    }\n    else {\n        console.log('Conexión a la base de datos MySQL establecida');\n    }\n});\nvar port = process.env.PORT || 3001;\napp.listen(port, function () {\n    console.log(\"Servidor Express escuchando en el puerto \".concat(port));\n});\nvar initialState = {\n    cart: [],\n    products: [\n        {\n            'id': '1',\n            'user': 'Felipe Rodriguez',\n            'password': '1234',\n            'telefono': 3167553547,\n            'email': 'philiprockert@gmail.com',\n        },\n        {\n            'id': '1',\n            'user': 'Felipe Rodriguez',\n            'password': 'Camiseta',\n            'telefono': 3167553547,\n            'email': 'philiprockert@gmail.com',\n        },\n        {\n            'id': '1',\n            'user': 'Felipe Rodriguez',\n            'password': 'Camiseta',\n            'telefono': 3167553547,\n            'email': 'philiprockert@gmail.com',\n        },\n        {\n            'id': '1',\n            'user': 'Felipe Rodriguez',\n            'password': 'Camiseta',\n            'telefono': 3167553547,\n            'email': 'philiprockert@gmail.com',\n        },\n        {\n            'id': '1',\n            'user': 'Felipe Rodriguez',\n            'password': 'Camiseta',\n            'telefono': 3167553547,\n            'email': 'philiprockert@gmail.com',\n        },\n        {\n            'id': '1',\n            'user': 'Felipe Rodriguez',\n            'password': 'Camiseta',\n            'telefono': 3167553547,\n            'email': 'philiprockert@gmail.com',\n        },\n    ],\n};\n\n\n//# sourceURL=webpack://pruebaexpress/./src/index.ts?");
 
 /***/ }),
 
@@ -27,6 +27,16 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar 
 /***/ ((module) => {
 
 module.exports = require("express");
+
+/***/ }),
+
+/***/ "mysql":
+/*!************************!*\
+  !*** external "mysql" ***!
+  \************************/
+/***/ ((module) => {
+
+module.exports = require("mysql");
 
 /***/ })
 
