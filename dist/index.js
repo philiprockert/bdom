@@ -16,7 +16,17 @@
   \**********************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar express = __webpack_require__(/*! express */ \"express\");\nvar mysql = __webpack_require__(/*! mysql */ \"mysql\");\nvar app = express();\nvar router = express.Router();\nvar cors = __webpack_require__(/*! cors */ \"cors\");\n//creando conexion mysql\nvar db = mysql.createConnection({\n    host: 'localhost:3306',\n    user: 'YES_BPO-BI',\n    password: '',\n    database: 'bdom'\n});\n//establecer conexion\ndb.connect(function (err) {\n    if (err) {\n        console.error('Error al conectar a la base de datos:', err);\n    }\n    else {\n        console.log('Conexión a la base de datos MySQL establecida');\n    }\n});\nvar port = process.env.PORT || 3001;\n//consular datos\nvar query = 'SELECT * FROM usuarios';\ndb.query(query, function (err, results) {\n    if (err) {\n        console.error('error al obtener los datos:', err);\n        return;\n    }\n    console.log(results);\n    app.get('/', function (req, res) {\n        res.json(results[0].nombre);\n    });\n});\napp.listen(port);\n\n\n//# sourceURL=webpack://pruebaexpress/./src/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar express = __webpack_require__(/*! express */ \"express\");\nvar mysql = __webpack_require__(/*! mysql */ \"mysql\");\nvar app = express();\nvar bodyParser = __webpack_require__(/*! body-parser */ \"body-parser\");\nvar router = express.Router();\nvar cors = __webpack_require__(/*! cors */ \"cors\");\n//creando conexion mysql\nvar db = mysql.createConnection({\n    host: 'localhost:3306',\n    user: 'YES_BPO-BI',\n    password: '',\n    database: 'bdom'\n});\nvar port = 3001;\napp.use(cors());\n//establecer conexion\ndb.connect(function (err) {\n    if (err) {\n        console.error('Error al conectar a la base de datos:', err);\n    }\n    else {\n        console.log('Conexión a la base de datos MySQL establecida');\n    }\n});\n//consular datos\nvar query = 'SELECT * FROM usuarios';\ndb.query(query, function (err, results) {\n    if (err) {\n        console.error('error al obtener los datos:', err);\n        return;\n    }\n    console.log(results);\n    app.get('/', function (req, res) {\n        res.json(results);\n    });\n});\napp.listen(port);\n\n\n//# sourceURL=webpack://pruebaexpress/./src/index.ts?");
+
+/***/ }),
+
+/***/ "body-parser":
+/*!******************************!*\
+  !*** external "body-parser" ***!
+  \******************************/
+/***/ ((module) => {
+
+module.exports = require("body-parser");
 
 /***/ }),
 
