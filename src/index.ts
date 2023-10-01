@@ -1,6 +1,6 @@
 
 import * as express from 'express';
-import { DB_HOST,PORT,DB_USER, DB_PASSWORD, DB_NAME, DB_PORT  } from './config.js' ;
+import { DB_HOST,PORT,DB_USER, DB_PASSWORD, DB_NAME, DB_PORT} from './config.js' ;
 const mysql = require('mysql');
 const app = express();
 const router = express.Router();

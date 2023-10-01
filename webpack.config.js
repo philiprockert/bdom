@@ -1,7 +1,7 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const NODE_ENV = process.env.NODE_ENV;
-const PORT = process.env.PORT || 3001;
+
 
 module.exports = {
     name :'express-serve',
