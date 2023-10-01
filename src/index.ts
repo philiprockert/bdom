@@ -1,44 +1,47 @@
 
 import * as express from 'express';
+import { DB_HOST,PORT,DB_USER, DB_PASSWORD, DB_NAME, DB_PORT  } from './config.js' ;
 const mysql = require('mysql');
+const app = express();
+const router = express.Router();
 const cors = require('cors');
 
-const app = express();
-const port = 3001;
+
+
 app.use(cors());
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  port: 3306,
-  user: 'root',
-  password: 'Dimebagphilip1971',
-  database: 'omnicom'
+  host:DB_HOST,
+  port:DB_PORT,
+  user:DB_USER,
+  password:DB_PASSWORD,
+  database:DB_NAME
 });
-
-// Establecer conexión a la base de datos
+//establecer conexion
 db.connect((err) => {
   if (err) {
     console.error('Error al conectar a la base de datos:', err);
   } else {
     console.log('Conexión a la base de datos MySQL establecida');
+  }})
+  const port = PORT;
+  //consular datos
+  const query ='SELECT * FROM usuario'
+  db.query(query, (err, results) => {if (err){
+  console.error('error al obtener los datos:', err);
+  return;
   }
-});
 
-// Definir la ruta y la lógica de consulta
-app.get('/', (req, res) => {
-  const query = 'SELECT * FROM usuario';
+  console.log(results);
 
-  db.query(query, (err, results) => {
-    if (err) {
-      console.error('Error al obtener los datos:', err);
-      return res.status(500).json({ error: 'Error al obtener los datos' });
-    }
+app.get('/', (req, res)=>{
 
-    // Enviar los resultados como respuesta JSON
-    res.json(results);
-  });
-});
+  res.json(results);
 
-app.listen(port, () => {
-  console.log(`Servidor Express escuchando en el puerto ${port}`);
-});
+})
+})
+app.get('/crear', async (req, res)=> {
+  const result = await db.query('INSERT INTO usuario(nombre, email, contraseña) VALUES("Jhon", "yesbpo@gmail.com", "23345")')
+})
+app.listen(port);
+
