@@ -41,7 +41,8 @@ app.get('/', (req, res)=>{
 })
 })
 app.get('/crear', async (req, res)=> {
-  const result = await db.query('INSERT INTO usuario(nombre, email, contraseña) VALUES("Jhon", "yesbpo@gmail.com", "23345")')
+  const result = await db.query('INSERT INTO usuario(nombre, email, contraseña) VALUES(?, ?, ?)')
+
 })
 app.listen(port);
 
