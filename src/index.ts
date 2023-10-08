@@ -32,7 +32,6 @@ const db = mysql.createPool({
   console.log(results);
 
 app.get('/', (req, res)=>{
-
   res.json(results);
 
 })
