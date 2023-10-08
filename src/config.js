@@ -5,7 +5,7 @@
 //export const DB_NAME = process.env.DB_NAME || 'omnicom';
 //export const DB_PORT = process.env.DB_PORT || 3306;
 
-export const PORT = 3001
+export const PORT = 3002
 export  const DB_HOST = 'containers-us-west-183.railway.app';
 export  const DB_USER = 'root';
 export  const DB_PASSWORD = 'l8buMHicvpHvn5EIhxne';

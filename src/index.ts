@@ -20,7 +20,6 @@ const db = mysql.createPool({
   database:DB_NAME
 });
 //establecer conexion
-
   const port = PORT;
   //consular datos
   const query ='SELECT * FROM usuario'
